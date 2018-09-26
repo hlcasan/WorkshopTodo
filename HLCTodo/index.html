@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Quick To Do</title>
+    <style>
+        .hide { display: none; }
+        .item {
+            display: grid;
+            grid-template-columns: 2em 1fr;
+        }
+        .item p:nth-child(1) {
+            text-align: center;
+        }
+        #addItemContainer div:nth-child(1) {
+            display: grid;
+            grid-template-columns: 2em 1fr;
+        }
+        #addBttn {
+            font-size: 2em;
+        }
+    </style>
+</head>
+
+<body>
+<!-- 
+LOCAL STORAGE:
+username window.localStorage.getItem("username")
+userid window.localStorage.getItem("userid")
+-->
+
+<div id="wrapper">
+    <header>
+        <h1>Quick To Do</h1>
+    </header>
+
+    <!-- WELCOME -->
+    <section id="welcomeContainer">
+        <h2 class="welcome">Welcome
+            <script>
+                document.write(window.localStorage.getItem("username"));
+            </script>!</h2>
+    </section>
+
+
+    <!-- LOG IN-->
+    <section id="loginContainer">
+        <h2>Log in</h2>
+
+        <form id="loginF" action="" method="post">
+            <label>Username
+                <input type="text" name="Username">
+            </label>
+            <label>Password
+                <input type="password" name="Password">
+            </label>
+            <input type="submit">
+        </form>
+        <script src="js/login.js"></script>
+    </section>
+
+    <!-- TO DO -->
+    <section id="todo"></section>
+    <script src="js/todo.js"></script>
+    <script>todo();</script>
+
+    <!-- ADD ITEM -->
+    <section id="addItemContainer">
+        <div>
+            <div id="addBttn">✚</div>
+            <div id="addForm" class="hide">
+                <form id="addF" action="" method="post">
+                    <input type="text" name="Description" id="Description">
+                    <input type="submit">
+                </form>
+            </div>
+        </div>
+        <script src="js/addItem.js"></script>
+    </section>
+
+
+<!-- UI HANDLER -->
+<script src="js/ui.js"></script>
+
+</div><!--wrapper-->
+</body>
+</html>
